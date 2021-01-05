@@ -43,16 +43,17 @@ class MarkovMachine {
 
   }
 
-  /** Return a sentence based on markov chains. */ 
+  /** Helper method: Return a sentence based on markov chains. */ 
 
   getSentence(numWords) {
-    let idx = Math.floor(Math.random() * Object.keys(this.chains).length);
-    let firstWord = Object.keys(this.chains)[idx];
+    const idx = Math.floor(Math.random() * Object.keys(this.chains).length);
+    const firstWord = Object.keys(this.chains)[idx];
+
     let nextWordOptions = this.chains[firstWord];
     let nextWordIdx = Math.floor(Math.random() * nextWordOptions.length);
     let nextWord = nextWordOptions[nextWordIdx];
 
-    let sentence = [capitalize(firstWord)]
+    const sentence = [capitalize(firstWord)]
     this.wordCount ++;
 
     while (nextWord !== null && this.wordCount < numWords) {
@@ -68,7 +69,7 @@ class MarkovMachine {
 }
 
 
-/** Given a string, return a copy of the string with the first letter 
+/** Helper function: Given a string, return a copy of the string with the first letter 
  * capitalized*/ 
 
 function capitalize(word) {
@@ -76,7 +77,11 @@ function capitalize(word) {
 }
 
 
-let mm = new MarkovMachine("the cat in the hat");
-console.log('chains are', mm.chains);
-console.log('text is \n', mm.getText());
+// let mm = new MarkovMachine("the cat in the hat");
+// console.log('chains are', mm.chains);
+// console.log('text is \n', mm.getText());
 
+module.exports = { 
+  MarkovMachine,
+  capitalize
+};
