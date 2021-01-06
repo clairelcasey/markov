@@ -1,3 +1,5 @@
+"use strict";
+
 const { MarkovMachine, capitalize } = require("./markov");
 
 describe("capitalize", function() {
@@ -21,7 +23,7 @@ describe("MarkovMachine", function() {
   beforeEach(function () {
     mm = new MarkovMachine(words);
   });
-
+  // TODO: group this test with line 53 (very similar)
   test("makeChains makes a valid chain", function () {
     let newChain = mm.makeChains(words.split(" "));
     expect(newChain).toEqual(catChain);
@@ -37,6 +39,8 @@ describe("MarkovMachine", function() {
   });
 
   test("gets a valid story text", function () {
+    // a b c d 
+    // TODO: test that we haven't violated rules of Markov chain (next word has to follow word in original text)
     expect(mm.getText(numWords = 50)).toEqual(expect.any(String));
   });
 

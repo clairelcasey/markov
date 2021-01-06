@@ -1,3 +1,4 @@
+"use strict";
 /** Textual markov chain generator */
 
 
@@ -48,7 +49,7 @@ class MarkovMachine {
   getSentence(numWords) {
     const idx = Math.floor(Math.random() * Object.keys(this.chains).length);
     const firstWord = Object.keys(this.chains)[idx];
-
+    // TODO: potentially break these 3 lines into a function (pick a thing randomly from a list)
     let nextWordOptions = this.chains[firstWord];
     let nextWordIdx = Math.floor(Math.random() * nextWordOptions.length);
     let nextWord = nextWordOptions[nextWordIdx];
@@ -69,17 +70,12 @@ class MarkovMachine {
 }
 
 
-/** Helper function: Given a string, return a copy of the string with the first letter 
- * capitalized*/ 
+/** Helper function: Given a string, return a copy of the string with the 
+ * first letter capitalized*/ 
 
 function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
-
-
-// let mm = new MarkovMachine("the cat in the hat");
-// console.log('chains are', mm.chains);
-// console.log('text is \n', mm.getText());
 
 module.exports = { 
   MarkovMachine,

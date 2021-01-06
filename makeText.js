@@ -63,7 +63,6 @@ async function start() {
   const text = await getText();
   let mm = new MarkovMachine(text);
   console.log(mm.getText());
-
 }
 
 start();
